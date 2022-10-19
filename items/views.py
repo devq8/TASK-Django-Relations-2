@@ -14,9 +14,11 @@ def get_items(req):
                 "name": item.name,
                 "price": item.price,
                 "image": item.image,
+                "categories": item.category,
             }
         )
     context = {"items": _items}
+    
     return render(req, "item_list.html", context)
 
 def get_item(req, item_id):
@@ -26,7 +28,8 @@ def get_item(req, item_id):
                     "id": item.id,
                     "name": item.name,
                     "price": item.price,
-                    "image": item.image
+                    "image": item.image,
+                    "comments": item.comments.all(),
                 }
             }
     return render(req, "item_detail.html", context)
